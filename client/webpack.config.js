@@ -27,11 +27,42 @@ module.exports = () => {
         swSrc: './src/sw.js',
         swDest: 'service-worker.js',
       }),
+      new WebpackPwaManifest({
+        name: 'J.A.T.E.',
+        short_name: 'J.A.T.E.',
+        description: 'Edit Text like never before!',
+        background_color: '#CB4335 ',
+        theme_color: '#CB4335 ',
+        start_url: '/',
+        publicPath: '/',
+        icons: [
+          {
+            //Check if src is correct path
+            src: path.resolve('src/images/logo.png'),
+            sizes: [96, 128, 192, 256, 384, 512],
+            destination: path.join('src', 'icons'),
+          },
+        ],
+      }),
     ],
 
     module: {
       rules: [
-        
+        {
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader'],
+        },
+        {
+          test: /\.m?js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
+            },
+          },
+        },
       ],
     },
   };
