@@ -29,7 +29,7 @@ export const getDb = async () => {
   const store = tx.objectStore("contact");
 
   //Use the .add() Method on the store to pass in the content
-  //Determine what we are going to store 
+  //***************** */Determine what we are going to store*****************************
   const request = store.add({name: name, email: email});
 
   //Get confirmation of the request
