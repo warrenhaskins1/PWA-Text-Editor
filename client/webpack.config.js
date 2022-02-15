@@ -20,25 +20,25 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
-        title: 'Webpack Plugin',
+        title: 'JATE',
       }),
-      new MiniCssExtractPlugin(),
+      // new MiniCssExtractPlugin(),
       new InjectManifest({
-        swSrc: './src/sw.js',
-        swDest: 'service-worker.js',
+        swSrc: ('./src-sw.js'),
+        swDest: 'src-sw.js',
       }),
       new WebpackPwaManifest({
-        name: 'J.A.T.E.',
-        short_name: 'J.A.T.E.',
+        name: 'JATE',
+        short_name: 'Just Another Text Editor.',
         description: 'Edit Text like never before!',
-        background_color: '#CB4335 ',
-        theme_color: '#CB4335 ',
+        background_color: '#03A062',
+        theme_color: '#03A062',
         start_url: '/',
         publicPath: '/',
         icons: [
           {
             //Check if src is correct path
-            src: path.resolve('src/images/logo.png'),
+            src: path.resolve('./src/images/logo.png'),
             sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join('assets', 'icons'),
           },
