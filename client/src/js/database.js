@@ -41,7 +41,7 @@ export const getDb = async (value) => {
 ///////////////////////////////////////////////////////////////////////////////////////
 //Put Update
 // TODO: Add logic to a method that accepts some content and adds it to the database
-export const putDb = async (value, id) => {
+export const putDb = async (id, value) => {
   console.log("PUT/update to the database");
 
   //Create a connection to the database and include the version that we want to use
@@ -54,7 +54,7 @@ export const putDb = async (value, id) => {
   const store = tx.objectStore("jate");
 
   //Use the add.() to pass the content
-  const request = store.add({ value: value, id: id });
+  const request = store.add({ id: id, value: value  });
 
   //Get confirmation of the request
   const result = await request;
